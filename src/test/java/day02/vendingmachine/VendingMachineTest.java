@@ -1,5 +1,7 @@
-package day02.vendingmachine;
+package day02.hf.vendingmachine;
 
+import day02.vendingmachine.Cola;
+import day02.vendingmachine.VendingMachine;
 import org.junit.Before;
 import org.junit.Test;
 
