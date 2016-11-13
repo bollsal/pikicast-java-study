@@ -1,4 +1,4 @@
-package day02.hf.vendingmachine;
+package day02.vendingmachine;
 
 import day02.vendingmachine.Cola;
 import day02.vendingmachine.VendingMachine;
