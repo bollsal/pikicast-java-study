@@ -27,7 +27,7 @@ public class CalculatorTest {
 
     @Test
     public void 더하기로_int범위넘겨봄() {
-        assertThat(calculator.plus(2147483647, 2147483647), is(20));
+        assertThat(calculator.plus(Integer.MAX_VALUE, 2147483647), is(20));
     }
 
     @Test
@@ -37,6 +37,11 @@ public class CalculatorTest {
 
     @Test
     public void 백_나누기_영은_에러다() {
+        assertThat(calculator.division(100, 0), is(1));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void 백_나누기_영은_에러_EXPECTED() {
         assertThat(calculator.division(100, 0), is(1));
     }
 
