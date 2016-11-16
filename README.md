@@ -8,3 +8,9 @@ Java, OOP, Java 8, RxJava, Kotlin 까지...
 - http://www.vogella.com/tutorials/Hamcrest/article.html#hamcrestoverview
 - http://javacan.tistory.com/entry/MocktestUsingMockito
 - https://speakerdeck.com/jeroenmols/testing-made-sweet-with-a-mockito
+
+
+## day 02 
+
+- 데미테르의 법칙.
+- 

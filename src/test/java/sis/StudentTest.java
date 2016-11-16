@@ -13,7 +13,8 @@ public class StudentTest {
 
     @Test
     public void create() {
-        Student student = new Student();
-        assertThat(student, is(notNullValue()));
+        String studentName = "케케티";
+        Student student = new Student(studentName);
+        assertThat(student.getName(), is(studentName));
     }
 }
