@@ -44,7 +44,7 @@ public class RockpaperscissorsTest {
     }
 
     @Test
-    public void 자는_경우() {
+    public void 지는_경우() {
         rockpaperscissors.computerValue = Common.VALUE.NUM_ROCK;
         rockpaperscissors.setUserInput(Common.VALUE.SCISSOR);
         assertThat(rockpaperscissors.getResult(), is(Common.RESULT.LOSE));
