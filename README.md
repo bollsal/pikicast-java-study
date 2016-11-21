@@ -13,4 +13,5 @@ Java, OOP, Java 8, RxJava, Kotlin 까지...
 ## day 02 
 
 - 데미테르의 법칙.
-- 
+- TestCode작성 -> 구현 -> 리펙토링.
+
