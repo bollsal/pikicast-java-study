@@ -1,6 +1,6 @@
-package day02.quiz.chess;
+package quiz.chess;
 
-import day02.quiz.chess.pieces.Pawn;
+import quiz.chess.pieces.Pawn;
 import org.junit.*;
 
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -22,25 +22,24 @@ public class BoardTest {
     @Before
     public void setUp() {
         board = new Board();
+        board.create();
     }
 
     @Test
     public void 말들이없어도_에러안남() {
-        board.create();
+
     }
 
     @Test
     public void 체스판에말들을추가하고_갯수확인() {
-        board.create();
-
-        Pawn whitePawn = new Pawn();
-        whitePawn.create(Pawn.COLOR.WHITE);
+        Pawn whitePawn = new Pawn(Pawn.WHITE);
+        whitePawn.create(Pawn.WHITE);
         board.addPawn(whitePawn);
 
         assertThat(board.getTotalPawnCount(), is(1));
 
-        Pawn blackPawn = new Pawn();
-        blackPawn.create(Pawn.COLOR.BLACK);
+        Pawn blackPawn = new Pawn(Pawn.BLACK);
+        blackPawn.create(Pawn.BLACK);
         board.addPawn(blackPawn);
 
         assertThat(board.getTotalPawnCount(), is(2));
@@ -52,6 +51,24 @@ public class BoardTest {
 //        Pawn blackPawn1 = new Pawn();
 //        blackPawn1.create(Pawn.COLOR.BLACK);
 //        assertThat(board.getPawnList(), hasItem(blackPawn1));
+    }
+
+    @Test
+    public void Create테스트() {
+        board.initialize();
+
+        String blackPawnRow = "PPPPPPPP";
+        String whitePawnRow = "pppppppp";
+        assertThat(board.printBoardRow(7), is(blackPawnRow));
+        assertThat(board.printBoardRow(2), is(whitePawnRow));
+
+        assertThat(board.getTotalPawnCount(), is(16));
+    }
+
+    @Test
+    public void 콘솔에출력하기() {
+        board.initialize();
+        System.out.println(board.printBoard());
     }
 
     @After

@@ -1,4 +1,4 @@
-package day02.quiz.rockpaperscissors;
+package quiz.rockpaperscissors;
 
 import java.util.Random;
 

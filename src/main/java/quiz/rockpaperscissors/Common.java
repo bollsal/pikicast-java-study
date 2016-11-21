@@ -1,4 +1,4 @@
-package day02.quiz.rockpaperscissors;
+package quiz.rockpaperscissors;
 
 /**
  * Created by bollsal on 2016. 11. 15..
@@ -19,8 +19,14 @@ public abstract class Common {
         String WIN = "이겼습니다.";
         String DRAW = "비겼습니다.";
         String LOSE = "졌습니다.";
+
+        String WIN_CONTINUE_GAME = "공격권을 이어갑니다.";
+        String WIN_MUKJJIPPA = WIN;
+        String LOSE_CONTINUE_GAME = "져서 공격권을 뺏깁니다.";
         String UNKNOWN = "???";
     }
 
     abstract String getResult(int computerValue);
+    abstract String getMukjjuppaResult(int computerValue);
+    abstract int getValue();
 }

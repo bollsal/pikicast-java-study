@@ -1,4 +1,4 @@
-package day02.quiz.chess.pieces;
+package quiz.chess.pieces;
 
 import org.junit.*;
 
@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class PawnTest {
 
-    Pawn pawn;
+    Pawn pawnWhite;
     Pawn pawnBlck;
 
     @BeforeClass
@@ -20,20 +20,20 @@ public class PawnTest {
 
     @Before
     public void setUp() {
-        pawn = new Pawn();
-        pawnBlck = new Pawn();
+        pawnWhite = new Pawn(Pawn.WHITE);
+        pawnBlck = new Pawn(Pawn.BLACK);
     }
 
     @Test
     public void getColor_white인지_체크() {
-        pawn.create(Pawn.COLOR.WHITE);
-        assertThat(pawn.getColor(), is(Pawn.COLOR.WHITE));
+        pawnWhite.create(Pawn.WHITE);
+        assertThat(pawnWhite.getColor(), is(Pawn.WHITE));
     }
 
     @Test
     public void getColor_black으로_할당하고_체크() {
-        pawnBlck.create(Pawn.COLOR.BLACK);
-        assertThat(pawnBlck.getColor(), is(Pawn.COLOR.BLACK));
+        pawnBlck.create(Pawn.BLACK);
+        assertThat(pawnBlck.getColor(), is(Pawn.BLACK));
     }
 
     @After

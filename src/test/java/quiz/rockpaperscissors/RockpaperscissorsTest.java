@@ -1,4 +1,4 @@
-package day02.quiz.rockpaperscissors;
+package quiz.rockpaperscissors;
 
 import org.junit.*;
 
@@ -48,6 +48,27 @@ public class RockpaperscissorsTest {
         rockpaperscissors.computerValue = Common.VALUE.NUM_ROCK;
         rockpaperscissors.setUserInput(Common.VALUE.SCISSOR);
         assertThat(rockpaperscissors.getResult(), is(Common.RESULT.LOSE));
+    }
+
+    @Test
+    public void 묵찌빠_각각의_케이스() {
+        Scissor scissor = new Scissor();
+        // 이기는 경우
+        assertThat(scissor.getMukjjuppaResult(scissor.getValue()), is(Common.RESULT.WIN_MUKJJIPPA));
+        // 이겨서 공격권 이어가는 경우
+        assertThat(scissor.getMukjjuppaResult(new Papers().getValue()), is(Common.RESULT.WIN_CONTINUE_GAME));
+        // 져서 공격권 뺏기는 경우
+        assertThat(scissor.getMukjjuppaResult(new Rock().getValue()), is(Common.RESULT.LOSE_CONTINUE_GAME));
+    }
+
+    @Test
+    public void 가위바위보의_결과값을_먼저정하고_결과가_잘나오는지_체크() {
+        String firstGame = Common.RESULT.WIN;
+        String secondGame = Common.RESULT.WIN_MUKJJIPPA;
+
+        Rock rock = new Rock();
+        assertThat(rock.getResult(new Scissor().getValue()), is(firstGame));
+        assertThat(rock.getMukjjuppaResult(new Rock().getValue()), is(secondGame));
     }
 
     @After
