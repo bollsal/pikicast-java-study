@@ -50,6 +50,9 @@ public class RockpaperscissorsTest {
         assertThat(rockpaperscissors.getResult(), is(Common.RESULT.LOSE));
     }
 
+    /**
+     * 단위테스트가 용이하도록 기능을 분류.
+     */
     @Test
     public void 묵찌빠_각각의_케이스() {
         Scissor scissor = new Scissor();

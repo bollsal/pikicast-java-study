@@ -1,15 +1,15 @@
-package sis;
+package sis.studentInfo;
 
 import org.junit.Before;
 import org.junit.Test;
+import sis.studentInfo.CourseSession;
+import sis.studentInfo.Student;
+import sis.util.DateUtil;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by bollsal on 2016. 11. 16..
@@ -22,7 +22,8 @@ public class CourseSessionTest {
 
     @Before
     public void setUp() {
-        courseSession = new CourseSession(department, number);
+        Date startDate = DateUtil.createDate(2016, 1, 4);
+        courseSession = new CourseSession(department, number, startDate);
     }
 
     @Test
@@ -42,20 +43,5 @@ public class CourseSessionTest {
         courseSession.enroll(student2);
         assertThat(courseSession.getStudent(1), is(student2));
         assertThat(courseSession.getStudentCount(), is(2));
-    }
-
-    @Test
-    public void startData() {
-        CourseSession courseSession = new CourseSession(department, number, createDate(2016, 1, 4));
-        assertThat(courseSession.getEndDate(), is(createDate(2016, 4, 22)));
-    }
-
-    Date createDate(int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.clear();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month - 1);
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        return calendar.getTime();
     }
 }

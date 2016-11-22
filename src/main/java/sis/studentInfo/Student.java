@@ -1,4 +1,4 @@
-package sis;
+package sis.studentInfo;
 
 /**
  * Created by bollsal on 2016. 11. 16..
