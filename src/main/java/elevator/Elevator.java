@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+package elevator;
 
 /**
  * Created by bollsal on 2016. 11. 28..

@@ -19,11 +19,11 @@ public class CourseSessionTest {
     private CourseSession courseSession;
     String department = "이산수학";
     String number = "10";
+    private Date startDate;
 
     @Before
     public void setUp() {
-        Date startDate = DateUtil.createDate(2016, 1, 4);
-        courseSession = new CourseSession(department, number, startDate);
+        courseSession = CourseSession.create(department, number, startDate);
     }
 
     @Test
@@ -43,5 +43,14 @@ public class CourseSessionTest {
         courseSession.enroll(student2);
         assertThat(courseSession.getStudent(1), is(student2));
         assertThat(courseSession.getStudentCount(), is(2));
+    }
+
+    @Test
+    public void count() {
+        CourseSession.clearSessionCount();
+        assertThat(CourseSession.getCourseSessionCount(), is(0));
+
+        CourseSession.create(department, number, startDate);
+        assertThat(CourseSession.getCourseSessionCount(), is(1));
     }
 }
