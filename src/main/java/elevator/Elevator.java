@@ -47,25 +47,27 @@ public class Elevator {
     }
 
     public void prepareElevator() {
-        int floor = -1;
+        int destFloor = -1;
+
         for (Person person : persons) {
-            int destFloor = person.getDestFloor();
+            int floor = person.getDestFloor();
             if (currentDirection == DIRECTION.UP) {
-                if (destFloor > currentFloor &&
-                        (floor == -1 || floor > destFloor)) {
-                    floor = destFloor;
+                if (floor > currentFloor &&
+                        (destFloor == -1 || destFloor > floor)) {
+                    destFloor = floor;
                 }
             } else {
-                if (destFloor < currentFloor &&
-                        (floor == -1 || floor < destFloor)) {
-                    floor = destFloor;
+                if (floor < currentFloor &&
+                        (destFloor == -1 || destFloor < floor)) {
+                    destFloor = floor;
                 }
             }
         }
-        floor -= currentFloor;
-        setCurrentDirection(floor > 0 ? DIRECTION.UP : DIRECTION.DOWN);
 
-        System.out.println("floor : " + floor + "__direction : " + currentDirection);
+        destFloor -= currentFloor;
+        setCurrentDirection(destFloor > 0 ? DIRECTION.UP : DIRECTION.DOWN);
+
+        System.out.println("destFloor : " + destFloor + "__direction : " + currentDirection);
     }
 
     public void tick() {
