@@ -31,9 +31,6 @@ public class ElevatorTest {
     private Person person02;
     private Person person03;
     private Elevator elevator;
-    private int destFloorPerson01;
-    private int destFloorPerson02;
-    private int destFloorPerson03;
 
     @Before
     public void setUp() {
@@ -59,22 +56,21 @@ public class ElevatorTest {
     @Test
     public void 한사람만타서_올라가는_경우() {
         elevator.enterElevator(person01);
-        destFloorPerson01 = 5;
-        person01.setDestFloor(destFloorPerson01);
+        person01.setDestFloor(5);
 
-        elevatorWorking(destFloorPerson01);
+        elevatorWorking(person01.getDestFloor());
 
         assertThat(elevator.getPersonCount(), is(0));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson01));
+        assertThat(elevator.getCurrentFloor(), is(person01.getDestFloor()));
     }
 
     @Test
     public void 같은층에서_두사람이타서_올라가는_경우() {
         sameDirectionTwoPerson();
 
-        elevatorWorking(Math.abs(destFloorPerson02 - elevator.getCurrentFloor()));
+        elevatorWorking(Math.abs(person02.getDestFloor() - elevator.getCurrentFloor()));
         assertThat(elevator.getPersonCount(), is(0));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson02));
+        assertThat(elevator.getCurrentFloor(), is(person02.getDestFloor()));
     }
 
     @Test
@@ -82,17 +78,16 @@ public class ElevatorTest {
         sameDirectionTwoPerson();
 
         elevator.enterElevator(person03);
-        destFloorPerson03 = 10;
-        person03.setDestFloor(destFloorPerson03);
+        person03.setDestFloor(10);
         assertThat(elevator.getPersonCount(), is(2));
 
-        elevatorWorking(Math.abs(destFloorPerson02 - elevator.getCurrentFloor()));
+        elevatorWorking(Math.abs(person02.getDestFloor() - elevator.getCurrentFloor()));
         assertThat(elevator.getPersonCount(), is(1));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson02));
+        assertThat(elevator.getCurrentFloor(), is(person02.getDestFloor()));
 
-        elevatorWorking(Math.abs(destFloorPerson03 - elevator.getCurrentFloor()));
+        elevatorWorking(Math.abs(person03.getDestFloor() - elevator.getCurrentFloor()));
         assertThat(elevator.getPersonCount(), is(0));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson03));
+        assertThat(elevator.getCurrentFloor(), is(person03.getDestFloor()));
     }
 
     @Test
@@ -100,31 +95,28 @@ public class ElevatorTest {
         sameDirectionTwoPerson();
 
         elevator.enterElevator(person03);
-        destFloorPerson03 = 2;
-        person03.setDestFloor(destFloorPerson03);
+        person03.setDestFloor(2);
         assertThat(elevator.getPersonCount(), is(2));
 
-        elevatorWorking(Math.abs(destFloorPerson02 - elevator.getCurrentFloor()));
+        elevatorWorking(Math.abs(person02.getDestFloor() - elevator.getCurrentFloor()));
         assertThat(elevator.getPersonCount(), is(1));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson02));
+        assertThat(elevator.getCurrentFloor(), is(person02.getDestFloor()));
 
-        elevatorWorking(Math.abs(destFloorPerson03 - elevator.getCurrentFloor()));
+        elevatorWorking(Math.abs(person03.getDestFloor() - elevator.getCurrentFloor()));
         assertThat(elevator.getPersonCount(), is(0));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson03));
+        assertThat(elevator.getCurrentFloor(), is(person03.getDestFloor()));
     }
 
     private void sameDirectionTwoPerson() {
         elevator.enterElevator(person01);
         elevator.enterElevator(person02);
 
-        destFloorPerson01 = 3;
-        person01.setDestFloor(destFloorPerson01);
-        destFloorPerson02 = 7;
-        person02.setDestFloor(destFloorPerson02);
+        person01.setDestFloor(3);
+        person02.setDestFloor(7);
 
-        elevatorWorking(destFloorPerson01);
+        elevatorWorking(person01.getDestFloor());
         assertThat(elevator.getPersonCount(), is(1));
-        assertThat(elevator.getCurrentFloor(), is(destFloorPerson01));
+        assertThat(elevator.getCurrentFloor(), is(person01.getDestFloor()));
 
     }
 
