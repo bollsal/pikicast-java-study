@@ -1,4 +1,4 @@
-package elevator;
+package quiz.elevator;
 
 import org.junit.Before;
 import org.junit.Test;
