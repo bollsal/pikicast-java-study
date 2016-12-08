@@ -19,7 +19,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        CustomerTest.class,
+        PersonTest.class,
         StationTest.class,
         SubwayTest.class
 })

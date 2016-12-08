@@ -73,4 +73,15 @@ public class CourseSessionTest {
         CourseSession.create(department, number, startDate);
         assertThat(CourseSession.getCourseSessionCount(), is(1));
     }
+
+    @Test
+    public void sort() {
+        Date date = new Date();
+        CourseSession sessionA = new CourseSession("A", "101", date);
+        CourseSession sessionB = new CourseSession("B", "101", date);
+
+        assertThat(sessionA.compareTo(sessionB), is(-1));
+        assertThat(sessionA.compareTo(sessionA), is(0));
+        assertThat(sessionB.compareTo(sessionA), is(1));
+    }
 }

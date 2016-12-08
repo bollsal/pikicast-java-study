@@ -8,7 +8,7 @@ import static org.hamcrest.CoreMatchers.*;
 /**
  * Created by bollsal on 2016. 12. 6..
  */
-public class CustomerTest {
+public class PersonTest {
 
     @Test
     public void 목적지설정() {

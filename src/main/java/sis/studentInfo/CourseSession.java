@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by bollsal on 2016. 11. 16..
  */
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
     private static int courseSessionCount;
 
     private final String department;
@@ -35,11 +35,11 @@ public class CourseSession {
         return CourseSession.courseSessionCount;
     }
 
-    String getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
-    String getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -76,5 +76,14 @@ public class CourseSession {
 
     public int getCredits() {
         return credits;
+    }
+
+    @Override
+    public int compareTo(CourseSession o) {
+        int compare = department.compareTo(o.department);
+        if(compare == 0) {
+            return number.compareTo(o.number);
+        }
+        return compare;
     }
 }

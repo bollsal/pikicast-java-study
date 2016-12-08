@@ -5,6 +5,7 @@ package sis.report;
  */
 public class ReportConstant {
     public static final String NEWLINE = "\n";
+    public static final String SPACE = " ";
 
     private ReportConstant() {
     }
