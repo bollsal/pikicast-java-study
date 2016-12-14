@@ -32,25 +32,6 @@ public class BoardTest {
     }
 
     @Test
-    public void 체스판에말들을추가하고_갯수확인() {
-        Piece whitePiece = PieceFactory.create(Piece.Color.WHITE, Piece.WHITE_PAWN);
-        whitePiece.create(Piece.Color.WHITE);
-        board.addPawn(whitePiece);
-
-        assertThat(board.getTotalPawnCount(), is(1));
-
-        Piece blackPiece = PieceFactory.create(Piece.Color.BLACK, Piece.BLACK_PAWN);
-        blackPiece.create(Piece.Color.BLACK);
-        board.addPawn(blackPiece);
-
-        assertThat(board.getTotalPawnCount(), is(2));
-
-
-        assertThat(board.getPawnList(), hasItem(whitePiece));
-        assertThat(board.getPawnList(), hasItem(blackPiece));
-    }
-
-    @Test
     public void Create테스트() {
         board.createPieces();
 

@@ -20,7 +20,8 @@ public class Board {
     public final static int WHITE_PAWN_ROW = 6;
     public final static int WHITE_PIECE_ROW = 7;
 
-    static List<Piece> pieceList;
+    private static int pieceCount;
+    private List<Piece> pieceList;
 
     public void create() {
         pieceList = new ArrayList<>();
@@ -31,13 +32,12 @@ public class Board {
     }
 
     public int getTotalPawnCount() {
-        int count = 0;
         for (Piece piece : pieceList) {
             if (!piece.getName().equals(Piece.EMPTY_PAWN)) {
-                count++;
+                Board.pieceCount++;
             }
         }
-        return count;
+        return Board.pieceCount;
     }
 
     public List<Piece> getPawnList() {
