@@ -8,10 +8,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by bollsal on 2016. 11. 15..
  */
-public class PawnTest {
+public class PieceTest {
 
-    Pawn pawnWhite;
-    Pawn pawnBlck;
+    Piece pieceWhite;
+    Piece pieceBlack;
 
     @BeforeClass
     public static void beforeClass() {
@@ -20,20 +20,20 @@ public class PawnTest {
 
     @Before
     public void setUp() {
-        pawnWhite = new Pawn(Pawn.WHITE);
-        pawnBlck = new Pawn(Pawn.BLACK);
+        pieceWhite = PieceFactory.create(Piece.Color.WHITE, Piece.WHITE_PAWN);
+        pieceBlack = PieceFactory.create(Piece.Color.BLACK, Piece.BLACK_PAWN);
     }
 
     @Test
     public void getColor_white인지_체크() {
-        pawnWhite.create(Pawn.WHITE);
-        assertThat(pawnWhite.getColor(), is(Pawn.WHITE));
+        pieceWhite.create(Piece.Color.WHITE);
+        assertThat(pieceWhite.getColor(), is(Piece.Color.WHITE));
     }
 
     @Test
     public void getColor_black으로_할당하고_체크() {
-        pawnBlck.create(Pawn.BLACK);
-        assertThat(pawnBlck.getColor(), is(Pawn.BLACK));
+        pieceBlack.create(Piece.Color.BLACK);
+        assertThat(pieceBlack.getColor(), is(Piece.Color.BLACK));
     }
 
     @After

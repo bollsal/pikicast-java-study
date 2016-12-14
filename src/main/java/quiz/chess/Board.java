@@ -1,10 +1,10 @@
 package quiz.chess;
 
-import quiz.chess.pieces.Pawn;
+import quiz.chess.pieces.Piece;
+import quiz.chess.pieces.PieceFactory;
+import quiz.chess.util.StringUtil;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,49 +15,72 @@ public class Board {
     public final static int BOARD_ROW = 8;
     public final static int BOARD_COLUMN = 8;
 
-    public final static int BLACK_ROW = 1;
-    public final static int WHITE_ROW = 6;
+    public final static int BLACK_PIECE_ROW = 0;
+    public final static int BLACK_PAWN_ROW = 1;
+    public final static int WHITE_PAWN_ROW = 6;
+    public final static int WHITE_PIECE_ROW = 7;
 
-    static List<Pawn> pawnList;
+    static List<Piece> pieceList;
 
     public void create() {
-        pawnList = new ArrayList<>();
+        pieceList = new ArrayList<>();
     }
 
-    public void addPawn(Pawn pawn) {
-        pawnList.add(pawn);
+    public void addPawn(Piece piece) {
+        pieceList.add(piece);
     }
 
     public int getTotalPawnCount() {
         int count = 0;
-        for (Pawn pawn : pawnList) {
-            if (!pawn.getMark().equals(Pawn.EMPTY_PAWN)) {
+        for (Piece piece : pieceList) {
+            if (!piece.getName().equals(Piece.EMPTY_PAWN)) {
                 count++;
             }
         }
         return count;
     }
 
-    public List<Pawn> getPawnList() {
-        return pawnList;
+    public List<Piece> getPawnList() {
+        return pieceList;
     }
 
-    public void initialize() {
+    public void createPieces() {
+        List<Piece> blackPieces = createPiece(Piece.Color.BLACK);
+        List<Piece> WhitePieces = createPiece(Piece.Color.WHITE);
         for (int i = 0; i < BOARD_ROW; i++) {
             for (int j = 0; j < BOARD_COLUMN; j++) {
                 switch (i) {
-                    case BLACK_ROW:
-                        pawnList.add(new Pawn(Pawn.BLACK));
+                    case BLACK_PIECE_ROW:
+                        pieceList.add(blackPieces.get(j));
                         break;
-                    case WHITE_ROW:
-                        pawnList.add(new Pawn(Pawn.WHITE));
+                    case BLACK_PAWN_ROW:
+                        pieceList.add(PieceFactory.create(Piece.Color.BLACK, Piece.BLACK_PAWN));
+                        break;
+                    case WHITE_PAWN_ROW:
+                        pieceList.add(PieceFactory.create(Piece.Color.WHITE, Piece.WHITE_PAWN));
+                        break;
+                    case WHITE_PIECE_ROW:
+                        pieceList.add(WhitePieces.get(j));
                         break;
                     default:
-                        pawnList.add(new Pawn(Pawn.EMPTY));
+                        pieceList.add(PieceFactory.create(Piece.Color.EMPTY, Piece.EMPTY_PAWN));
                         break;
                 }
             }
         }
+    }
+
+    public List<Piece> createPiece(Piece.Color color) {
+        List<Piece> pieces = new ArrayList<>();
+        pieces.add(PieceFactory.createRook(color, null));
+        pieces.add(PieceFactory.createKnight(color, null));
+        pieces.add(PieceFactory.createBishop(color, null));
+        pieces.add(PieceFactory.createQueen(color, null));
+        pieces.add(PieceFactory.createKing(color, null));
+        pieces.add(PieceFactory.createBishop(color, null));
+        pieces.add(PieceFactory.createKnight(color, null));
+        pieces.add(PieceFactory.createRook(color, null));
+        return pieces;
     }
 
     public String printBoardRow(int row) {
@@ -66,12 +89,12 @@ public class Board {
 //        for (int i = 0; i < BOARD_ROW; i++) {
 //            for (int j = 0; j < BOARD_COLUMN; j++) {
 //                if (i == row) {
-//                    builder.append(pawnList.get((BOARD_ROW * i) + j).getMark());
+//                    builder.append(pieceList.get((BOARD_ROW * i) + j).getMark());
 //                }
 //            }
 //        }
         for (int j = 0; j < BOARD_COLUMN; j++) {
-            builder.append(pawnList.get((BOARD_ROW * (BOARD_ROW - row)) + j).getMark());
+            builder.append(pieceList.get((BOARD_ROW * (BOARD_ROW - row)) + j).getName());
         }
 
         return builder.toString();
@@ -81,18 +104,18 @@ public class Board {
         StringBuilder builder = new StringBuilder();
         for (int i = BOARD_ROW; i > 0; i--) {
             builder.append(printBoardRow(i));
-            builder.append("\n");
+            builder.append(StringUtil.NEW_LINE);
         }
 //        for (int i = 0; i < BOARD_ROW; i++) {
 //            builder.append(printBoardRow(i));
-//            builder.append("\n");
+//            builder.append(StringUtil.NEW_LINE);
 //        }
         return builder.toString();
     }
 
 //    public static void main(String... args) {
-//        pawnList = new ArrayList<>();
-//        initialize();
+//        pieceList = new ArrayList<>();
+//        createBlackPieces();
 //
 //        System.out.println(printBoardRow(7));
 //
