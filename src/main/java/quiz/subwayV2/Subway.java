@@ -54,6 +54,8 @@ public class Subway {
                     start = true;
                 }
                 if (start) {
+                    currentPosition = subwayInfo.getName();
+
                     builder.append(subwayInfo.getName());
                     builder.append(" - ");
 
@@ -74,7 +76,6 @@ public class Subway {
                         System.out.println("도착");
                         break;
                     }
-                    currentPosition = subwayInfo.getName();
                 }
             }
         }
