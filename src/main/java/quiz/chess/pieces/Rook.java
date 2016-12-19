@@ -7,8 +7,8 @@ public class Rook extends Piece {
     public static final String BLACK_NAME = "R";
     public static final String WHITE_NAME = "r";
 
-    Rook(Color color, String name) {
-        super(color, name);
+    Rook(Color color) {
+        super(color);
     }
 
     @Override

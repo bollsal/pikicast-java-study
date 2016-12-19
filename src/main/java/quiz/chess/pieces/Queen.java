@@ -7,8 +7,8 @@ public class Queen extends Piece {
     public static final String BLACK_NAME = "Q";
     public static final String WHITE_NAME = "q";
 
-    Queen(Color color, String name) {
-        super(color, name);
+    Queen(Color color) {
+        super(color);
     }
 
     @Override

@@ -45,8 +45,8 @@ public class Board {
     }
 
     public void createPieces() {
-        List<Piece> blackPieces = createPiece(Piece.Color.BLACK);
-        List<Piece> WhitePieces = createPiece(Piece.Color.WHITE);
+        List<Piece> blackPieces = createBlackPiece();
+        List<Piece> WhitePieces = createWhitePiece();
         for (int i = 0; i < BOARD_ROW; i++) {
             for (int j = 0; j < BOARD_COLUMN; j++) {
                 switch (i) {
@@ -54,32 +54,45 @@ public class Board {
                         pieceList.add(blackPieces.get(j));
                         break;
                     case BLACK_PAWN_ROW:
-                        pieceList.add(PieceFactory.create(Piece.Color.BLACK, Piece.BLACK_PAWN));
+                        pieceList.add(PieceFactory.createBlackPawn());
                         break;
                     case WHITE_PAWN_ROW:
-                        pieceList.add(PieceFactory.create(Piece.Color.WHITE, Piece.WHITE_PAWN));
+                        pieceList.add(PieceFactory.createWhitePawn());
                         break;
                     case WHITE_PIECE_ROW:
                         pieceList.add(WhitePieces.get(j));
                         break;
                     default:
-                        pieceList.add(PieceFactory.create(Piece.Color.EMPTY, Piece.EMPTY_PAWN));
+                        pieceList.add(PieceFactory.createEmptyPawn());
                         break;
                 }
             }
         }
     }
 
-    public List<Piece> createPiece(Piece.Color color) {
+    public List<Piece> createBlackPiece() {
         List<Piece> pieces = new ArrayList<>();
-        pieces.add(PieceFactory.createRook(color, null));
-        pieces.add(PieceFactory.createKnight(color, null));
-        pieces.add(PieceFactory.createBishop(color, null));
-        pieces.add(PieceFactory.createQueen(color, null));
-        pieces.add(PieceFactory.createKing(color, null));
-        pieces.add(PieceFactory.createBishop(color, null));
-        pieces.add(PieceFactory.createKnight(color, null));
-        pieces.add(PieceFactory.createRook(color, null));
+        pieces.add(PieceFactory.createBlackRook());
+        pieces.add(PieceFactory.createBlackKnight());
+        pieces.add(PieceFactory.createBlackBishop());
+        pieces.add(PieceFactory.createBlackQueen());
+        pieces.add(PieceFactory.createBlackKing());
+        pieces.add(PieceFactory.createBlackBishop());
+        pieces.add(PieceFactory.createBlackKnight());
+        pieces.add(PieceFactory.createBlackRook());
+        return pieces;
+    }
+
+    public List<Piece> createWhitePiece() {
+        List<Piece> pieces = new ArrayList<>();
+        pieces.add(PieceFactory.createWhiteRook());
+        pieces.add(PieceFactory.createWhiteKnight());
+        pieces.add(PieceFactory.createWhiteBishop());
+        pieces.add(PieceFactory.createWhiteQueen());
+        pieces.add(PieceFactory.createWhiteKing());
+        pieces.add(PieceFactory.createWhiteBishop());
+        pieces.add(PieceFactory.createWhiteKnight());
+        pieces.add(PieceFactory.createWhiteRook());
         return pieces;
     }
 

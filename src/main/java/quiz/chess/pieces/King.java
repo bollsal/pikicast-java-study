@@ -7,8 +7,8 @@ public class King extends Piece {
     public static final String BLACK_NAME = "K";
     public static final String WHITE_NAME = "k";
 
-    King(Color color, String name) {
-        super(color, name);
+    King(Color color) {
+        super(color);
     }
 
     @Override

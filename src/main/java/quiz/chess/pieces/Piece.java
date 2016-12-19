@@ -5,8 +5,8 @@ package quiz.chess.pieces;
  */
 public class Piece {
 
-    public enum Color {
-        WHITE, BLACK, EMPTY;
+    enum Color {
+        WHITE, BLACK, EMPTY
     }
 
     public static final String WHITE_PAWN = "p";
@@ -14,11 +14,9 @@ public class Piece {
     public static final String EMPTY_PAWN = ".";
 
     Color color;
-    String name;
 
-    Piece(Color color, String name) {
+    Piece(Color color) {
         this.color = color;
-        this.name = name;
     }
 
     public void create(Color color) {
@@ -30,7 +28,13 @@ public class Piece {
     }
 
     public String getName() {
-        return name;
+        if (isWhite()) {
+            return WHITE_PAWN;
+        } else if(isBlack()) {
+            return BLACK_PAWN;
+        } else {
+            return EMPTY_PAWN;
+        }
     }
 
     public boolean isWhite() {

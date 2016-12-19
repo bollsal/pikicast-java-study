@@ -7,8 +7,8 @@ public class Knight extends Piece {
     public static final String BLACK_NAME = "N";
     public static final String WHITE_NAME = "n";
 
-    Knight(Color color, String name) {
-        super(color, name);
+    Knight(Color color) {
+        super(color);
     }
 
     @Override

@@ -20,8 +20,8 @@ public class PieceTest {
 
     @Before
     public void setUp() {
-        pieceWhite = PieceFactory.create(Piece.Color.WHITE, Piece.WHITE_PAWN);
-        pieceBlack = PieceFactory.create(Piece.Color.BLACK, Piece.BLACK_PAWN);
+        pieceWhite = PieceFactory.createWhitePawn();
+        pieceBlack = PieceFactory.createBlackPawn();
     }
 
     @Test

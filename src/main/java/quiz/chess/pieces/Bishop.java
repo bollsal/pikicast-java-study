@@ -7,8 +7,8 @@ public class Bishop extends Piece {
     public static final String BLACK_NAME = "B";
     public static final String WHITE_NAME = "b";
 
-    Bishop(Color color, String name) {
-        super(color, name);
+    Bishop(Color color) {
+        super(color);
     }
 
     @Override
