@@ -69,6 +69,22 @@ public class Elevator {
         System.out.println("destFloor : " + destFloor + "__direction : " + currentDirection);
     }
 
+    public void call(int dstFloor) {
+        decideDirection(dstFloor);
+        int tick = Math.abs(dstFloor - currentFloor);
+        for (int i = 0; i < tick; i++) {
+            tick();
+        }
+    }
+
+    private void decideDirection(int dstFloor) {
+        if (dstFloor > currentFloor) {
+            setCurrentDirection(DIRECTION.UP);
+        } else if (dstFloor < currentFloor) {
+            setCurrentDirection(DIRECTION.DOWN);
+        }
+    }
+
     public void tick() {
         if (currentDirection == DIRECTION.UP) {
             currentFloor++;
