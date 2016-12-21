@@ -1,21 +1,20 @@
 package quiz.rockpaperscissors;
 
 /**
- * Created by bollsal on 2016. 11. 15..
+ * Created by bollsal on 2016. 12. 21..
  */
-public class Papers extends Common {
-
+public class Spock extends Common {
     @Override
     String getResult(int computerValue) {
         switch (computerValue) {
+            case VALUE.NUM_ROCK:
             case VALUE.NUM_SCISSOR:
+                return RESULT.WIN;
+            case VALUE.NUM_SPOCK:
+                return RESULT.DRAW;
+            case VALUE.NUM_PAPERS:
             case VALUE.NUM_LIZARD:
                 return RESULT.LOSE;
-            case VALUE.NUM_ROCK:
-            case VALUE.NUM_SPOCK:
-                return RESULT.WIN;
-            case VALUE.NUM_PAPERS:
-                return RESULT.DRAW;
             default:
                 return RESULT.UNKNOWN;
         }
@@ -24,14 +23,14 @@ public class Papers extends Common {
     @Override
     String getMukjjuppaResult(int computerValue) {
         switch (computerValue) {
-            case VALUE.NUM_SCISSOR:
-            case VALUE.NUM_LIZARD:
-                return RESULT.LOSE_CONTINUE_GAME;
             case VALUE.NUM_ROCK:
+            case VALUE.NUM_SCISSOR:
+                return RESULT.WIN;
             case VALUE.NUM_SPOCK:
-                return RESULT.WIN_CONTINUE_GAME;
+                return RESULT.DRAW;
             case VALUE.NUM_PAPERS:
-                return RESULT.WIN_MUKJJIPPA;
+            case VALUE.NUM_LIZARD:
+                return RESULT.LOSE;
             default:
                 return RESULT.UNKNOWN;
         }
@@ -39,6 +38,6 @@ public class Papers extends Common {
 
     @Override
     int getValue() {
-        return VALUE.NUM_PAPERS;
+        return VALUE.NUM_SPOCK;
     }
 }

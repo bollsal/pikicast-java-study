@@ -9,10 +9,12 @@ public class Rock extends Common {
     String getResult(int computerValue) {
         switch (computerValue) {
             case VALUE.NUM_SCISSOR:
+            case VALUE.NUM_LIZARD:
                 return RESULT.WIN;
             case VALUE.NUM_ROCK:
                 return RESULT.DRAW;
             case VALUE.NUM_PAPERS:
+            case VALUE.NUM_SPOCK:
                 return RESULT.LOSE;
             default:
                 return RESULT.UNKNOWN;
@@ -23,10 +25,12 @@ public class Rock extends Common {
     String getMukjjuppaResult(int computerValue) {
         switch (computerValue) {
             case VALUE.NUM_SCISSOR:
+            case VALUE.NUM_LIZARD:
                 return RESULT.WIN_CONTINUE_GAME;
             case VALUE.NUM_ROCK:
                 return RESULT.WIN_MUKJJIPPA;
             case VALUE.NUM_PAPERS:
+            case VALUE.NUM_SPOCK:
                 return RESULT.LOSE_CONTINUE_GAME;
             default:
                 return RESULT.UNKNOWN;

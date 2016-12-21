@@ -9,10 +9,14 @@ public abstract class Common {
         String SCISSOR = "가위";
         String ROCK = "바위";
         String PAPERS = "보";
+        String SPOCK = "스폭";
+        String LIZARD = "도마뱀";
 
         int NUM_SCISSOR = 0;
         int NUM_ROCK = 1;
         int NUM_PAPERS = 2;
+        int NUM_SPOCK = 3;
+        int NUM_LIZARD = 4;
     }
 
     interface RESULT {
